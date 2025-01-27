@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 
-	_ "github.com/mattn/go-sqlite3"
 	"githumgithub.com/AliImrangang/golang-scaleable-api/internal/config"
 	"githumgithub.com/AliImrangang/golang-scaleable-api/internal/types"
+	_ "modernc.org/sqlite"
 )
 
 type Sqlite struct {
@@ -15,7 +15,7 @@ type Sqlite struct {
 
 func New(cfg *config.Config) (*Sqlite, error) {
 
-	db, err := sql.Open("sqlite3", cfg.StoragePath)
+	db, err := sql.Open("sqlite", cfg.StoragePath)
 
 	if err != nil {
 		return nil, err
